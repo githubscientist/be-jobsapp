@@ -6,7 +6,7 @@ This is a job portal application that allows users to create an account, login, 
 
 ## Features
 
-Candidate:
+Candidate/User:
 
 - Candidate can create an account
 - Candidate can login
