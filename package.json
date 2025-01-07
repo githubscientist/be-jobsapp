@@ -1,0 +1,19 @@
+{
+  "name": "be-jobsapp",
+  "version": "1.0.0",
+  "description": "## This is a job portal application that allows users to create an account, login, and apply for jobs.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/githubscientist/be-jobsapp.git"
+  },
+  "author": "Sathish Gnanaprakasam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/githubscientist/be-jobsapp/issues"
+  },
+  "homepage": "https://github.com/githubscientist/be-jobsapp#readme"
+}
