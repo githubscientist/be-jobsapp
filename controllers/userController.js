@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Job = require('../models/Job');
 
 const userController = {
     getProfile: async (req, res) => {
@@ -51,7 +52,28 @@ const userController = {
     },
     applyJob: async (req, res) => {
         try {
+            // get the jobId from the request parameters
+            const jobId = req.params.jobId;
 
+            // get the userId from the request object
+            const userId = req.userId;
+
+            // get the job details from the database
+            const job = await Job.findById(jobId);
+
+            // check if the user has already applied for the job
+            if (job.applicants.includes(userId)) {
+                return res.status(400).json({ message: 'You have already applied for this job' });
+            }
+
+            // push the user to the job's applicants array
+            job.applicants.push(userId);
+
+            // save the job and user
+            await job.save();
+
+            // send the response
+            res.status(200).json({ message: 'Applied for the job successfully' });
         } catch (error) {
             res.status(500).json({ message: error.message });
         }
