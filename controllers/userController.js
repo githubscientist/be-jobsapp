@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const Job = require('../models/Job');
+const { get } = require('mongoose');
 
 const userController = {
     getProfile: async (req, res) => {
@@ -81,6 +82,31 @@ const userController = {
     myApplications: async (req, res) => {
         try {
 
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    },
+    getJobs: async (req, res) => {
+        try {
+            // get the jobs from the database
+            const jobs = await Job.find().select('-applicants -__v');
+
+            // send the jobs in the response
+            res.status(200).json(jobs);
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    },
+    getJob: async (req, res) => {
+        try {
+            // get the jobId from the request parameters
+            const jobId = req.params.jobId;
+
+            // get the job from the database
+            const job = await Job.findById(jobId).select('-__v -applicants');
+
+            // send the job in the response
+            res.status(200).json(job);
         } catch (error) {
             res.status(500).json({ message: error.message });
         }

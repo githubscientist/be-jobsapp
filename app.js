@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(cors({
-    origin: '*', // Allow all origins
+    origin: 'https://fe-jobsapp.netlify.app',
     credentials: true
 }));
 

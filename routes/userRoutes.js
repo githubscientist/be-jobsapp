@@ -10,5 +10,7 @@ userRouter.delete('/profile', auth.checkAuth, auth.allowRoles(['user']), userCon
 
 userRouter.post('/apply/:jobId', auth.checkAuth, auth.allowRoles(['user']), userController.applyJob);
 userRouter.get('/applications', auth.checkAuth, auth.allowRoles(['user']), userController.myApplications);
+userRouter.get('/jobs', auth.checkAuth, auth.allowRoles(['user']), userController.getJobs);
+userRouter.get('/jobs/:jobId', auth.checkAuth, auth.allowRoles(['user']), userController.getJob);
 
 module.exports = userRouter;
