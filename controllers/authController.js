@@ -60,8 +60,7 @@ const authController = {
                 httpOnly: true,
                 secure: true,
                 sameSite: 'none',
-                path: "/",
-                domain: "fe-jobsapp.netlify.app"
+                path: "/", // the cookie will be sent for all routes
             });
 
             // return a success message
