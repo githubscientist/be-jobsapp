@@ -56,7 +56,13 @@ const authController = {
             const token = jwt.sign({ id: user._id }, JWT_SECRET);
 
             // set the token in the cookie
-            res.cookie('token', token, { httpOnly: true });
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'none',
+                path: "/",
+                domain: "fe-jobsapp.netlify.app"
+            });
 
             // return a success message
             res.status(200).json({ message: 'Login successful' });
