@@ -82,6 +82,9 @@ const authController = {
     },
     me: async (req, res) => {
         try {
+            // Disable caching for this route
+            res.setHeader('Cache-Control', 'no-store');
+
             // get the userId from the request object
             const { userId } = req;
 
