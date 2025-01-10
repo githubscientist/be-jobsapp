@@ -64,12 +64,12 @@ const authController = {
             //     path: "/", // the cookie will be sent for all routes
             // });
 
-            res.header("Set-Cookie", "token=" + token + "; HttpOnly; Secure; SameSite=Strict; Path=/;");
+            res.header("Set-Cookie", "token=" + token + "; HttpOnly; Secure; SameSite=None; Path=/;");
 
             res.cookie('token', token, {
                 httpOnly: true,
                 secure: true,
-                sameSite: 'Strict',
+                sameSite: 'None',
                 path: "/", // the cookie will be sent for all routes
             });
 
