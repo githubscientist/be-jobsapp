@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../utils/config');
+const { path } = require('../app');
 
 const authController = {
     register: async (req, res) => {
@@ -64,6 +65,13 @@ const authController = {
             // });
 
             res.header("Set-Cookie", "token=" + token + "; HttpOnly; Secure; SameSite=Strict; Path=/;");
+
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'Strict',
+                path: "/", // the cookie will be sent for all routes
+            });
 
             // return a success message
             res.status(200).json({ message: 'Login successful' });
