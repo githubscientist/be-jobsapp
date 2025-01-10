@@ -66,12 +66,12 @@ const authController = {
 
             res.header("Set-Cookie", "token=" + token + "; HttpOnly; Secure; SameSite=None; Path=/;");
 
-            res.cookie('token', token, {
-                httpOnly: true,
-                secure: true,
-                sameSite: 'None',
-                path: "/", // the cookie will be sent for all routes
-            });
+            // res.cookie('token', token, {
+            //     httpOnly: true,
+            //     secure: true,
+            //     sameSite: 'None',
+            //     path: "/", // the cookie will be sent for all routes
+            // });
 
             // return a success message
             res.status(200).json({ message: 'Login successful' });
