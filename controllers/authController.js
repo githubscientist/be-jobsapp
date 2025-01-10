@@ -64,7 +64,7 @@ const authController = {
             //     path: "/", // the cookie will be sent for all routes
             // });
 
-            res.header("Set-Cookie", "token=" + token + "; HttpOnly; Secure; SameSite=Secure; Path=/;");
+            res.header("Set-Cookie", "token=" + token + "; HttpOnly; Secure; SameSite=None; Path=/;");
 
             // res.cookie('token', token, {
             //     httpOnly: true,
@@ -82,7 +82,9 @@ const authController = {
     logout: async (req, res) => {
         try {
             // clear the token from the cookie
-            res.clearCookie('token');
+            // res.clearCookie('token');
+
+            res.header("Set-Cookie", "token=; HttpOnly; Secure; SameSite=None; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT");
 
             // return a success message
             res.status(200).json({ message: 'Logout successful' });
