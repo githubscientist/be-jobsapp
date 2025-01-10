@@ -59,7 +59,7 @@ const authController = {
             res.cookie('token', token, {
                 httpOnly: true,
                 secure: true,
-                sameSite: 'none',
+                sameSite: 'None',
                 path: "/", // the cookie will be sent for all routes
             });
 
